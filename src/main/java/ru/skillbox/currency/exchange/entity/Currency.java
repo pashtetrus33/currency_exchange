@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Currency {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
-    @SequenceGenerator(name = "sequence", sequenceName = "create_sequence", allocationSize = 0)
+    @SequenceGenerator(name = "sequence", sequenceName = "create_sequence", allocationSize = 1)
     @Column(name = "id")
     private Long id;
 
@@ -31,4 +31,6 @@ public class Currency {
     @Column(name = "iso_num_code")
     private Long isoNumCode;
 
+    @Column(name = "iso_alpha_code")
+    private String isoAlphaCode;
 }
