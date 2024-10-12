@@ -2,6 +2,8 @@ package ru.skillbox.currency.exchange.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ru.skillbox.currency.exchange.dto.CurrencyRequestDto;
 import ru.skillbox.currency.exchange.dto.CurrencyResponseDto;
@@ -11,6 +13,7 @@ import ru.skillbox.currency.exchange.repository.CurrencyRepository;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -35,5 +38,9 @@ public class CurrencyService {
     public CurrencyResponseDto create(CurrencyRequestDto dto) {
         log.info("CurrencyService method create executed");
         return mapper.convertToDto(repository.save(mapper.convertToEntity(dto)));
+    }
+
+    public Page<Currency> getAllCurrencies(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 }
