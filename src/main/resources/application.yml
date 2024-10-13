@@ -4,7 +4,7 @@ server:
 spring:
   liquibase:
     enabled: true
-    drop-first: true
+    drop-first: true # После первого запуска (выполнения всех миграций) выставить в false для исключения потери данных
     default-schema: public
     change-log: classpath:db/changelog_init.xml
 
@@ -20,3 +20,10 @@ spring:
         show_sql: true
         hbm2ddl:
           auto: none
+cb:
+  api:
+    url: https://cbr.ru/scripts/XML_daily.asp
+
+currency:
+  update:
+    period: "0 0 * * * ?" # Каждый час в 0 минут
